@@ -19,7 +19,7 @@ public class LocalProcessor {
     private String processorName;
     private Long period = 10_000_000_000_000L;
     private String processorVersion;
-    private Integer valueofCheap;
+    private Integer valueOfCheap;
     private Scanner informationScanner;
     private StringBuilder builder;
     private List<String> stringArrayList = new LinkedList<>();
@@ -29,7 +29,7 @@ public class LocalProcessor {
         this.processorName = processorName;
         this.period = period;
         this.processorVersion = processorVersion;
-        this.valueofCheap = valueOfCheap;
+        this.valueOfCheap = valueOfCheap;
         this.informationScanner = informationScanner;
         this.stringArrayList = stringArrayList;
     }
@@ -38,7 +38,7 @@ public class LocalProcessor {
     }
 
     @ListIteratorAnnotation
-    public void listiterator(List<String> stringList) {
+    public void listIterator(List<String> stringList) {
         stringList.stream()
                 .filter(Objects::nonNull)
                 .map(String::hashCode)
@@ -46,7 +46,7 @@ public class LocalProcessor {
     }
 
     @FullNameProcessorGeneratorAnnotation
-    public String fullnameProcessorgenerator(List<String> stringList) {
+    public String fullNameProcessorGenerator(List<String> stringList) {
         builder = new StringBuilder(processorName);
         for (String s : stringList) {
             builder.append(s).append(" ");
@@ -56,7 +56,7 @@ public class LocalProcessor {
     }
 
     @ReadFullProcessorNameAnnotation
-    public void readfullprocessorname(File file) {
+    public void readFullProcessorName(File file) {
         try (Scanner scanner = new Scanner(file)) {
             informationScanner = scanner;
             builder = new StringBuilder(processorVersion);
