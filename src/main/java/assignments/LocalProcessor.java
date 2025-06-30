@@ -47,9 +47,15 @@ public class LocalProcessor {
 
     @FullNameProcessorGeneratorAnnotation
     public String fullNameProcessorGenerator(List<String> stringList) {
-        builder = new StringBuilder(processorName);
+        if (stringList == null) {
+            return processorName != null ? processorName : "";
+        }
+        String safeProcessorName = processorName != null ? processorName : "";
+        builder = new StringBuilder(safeProcessorName);
         for (String s : stringList) {
-            builder.append(s).append(" ");
+            if (s != null) {
+                builder.append(s).append(" ");
+            }
         }
         processorName = builder.toString();
         return processorName;
@@ -59,7 +65,8 @@ public class LocalProcessor {
     public void readFullProcessorName(File file) {
         try (Scanner scanner = new Scanner(file)) {
             informationScanner = scanner;
-            builder = new StringBuilder(processorVersion);
+            String safeProcessorVersion = processorVersion != null ? processorVersion : "";
+            builder = new StringBuilder(safeProcessorVersion);
             while (scanner.hasNext()) {
                 builder.append(scanner.nextLine());
             }
